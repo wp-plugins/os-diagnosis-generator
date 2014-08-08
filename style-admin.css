@@ -1,0 +1,214 @@
+#diagnosis-plugin a{
+	color:blue;
+}
+.diagnosis-wrap h2{
+	margin:15px 0 15px 0;padding:0;
+	font-size:180%;font-weight:bold;
+}
+.diagnosis-wrap h3{
+	margin:15px 0 15px 0;padding:0;
+	font-size:140%;font-weight:bold;
+}
+.diagnosis-wrap h3.green{
+	font-size:120%;color:green;
+}
+.diagnosis-contents{
+	padding:5px;
+}
+#diagnosis-plugin form{
+	font-size:100%;
+}
+#diagnosis-plugin table{
+	margin:0;border-collapse:collapse;
+}
+#diagnosis-plugin th, #diagnosis-plugin td{
+	padding:5px;border:1px solid #ccc;
+}
+#diagnosis-plugin th{
+	background-color:#DCDCDC;
+}
+#diagnosis-plugin .red_message{
+	margin:10px 0 10px 0;padding:0;color:red;
+}
+#diagnosis-plugin .red_message p{
+	margin:0;padding:5px 0 5px 0;
+}
+#diagnosis-plugin .line{
+	margin:0 0 10px 0;min-width:600px;
+	*width:600px;_width:600px;
+}
+#diagnosis-plugin .line td .input{
+	width:100%;
+}
+#diagnosis-plugin .line th.l{
+	width:25%;
+}
+#diagnosis-plugin .line td.c{
+	padding-right:45px;width:75%;position:relative;
+}
+#diagnosis-plugin .line td .setsu{
+	position:absolute;top:5px;right:10px;
+}
+#diagnosis-plugin .line td .setsu-m{
+	position:absolute;top:50px;right:10px;
+}
+#diagnosis-plugin .line td .hfder{
+	min-width:400px;height:120px;
+	*width:400px;_width:400px;
+}
+#diagnosis-plugin .submit{
+	margin:0 10px 0 10px;
+}
+#diagnosis-plugin .submit input{
+	background:#DCDCDC;border:1px solid #ccc;border-radius:8px;
+	-moz-border-radius:8px;-webkit-border-radius:8px;cursor:pointer;
+	color:#111;width:150px;padding:5px 0;font-weight:bold;
+}
+#diagnosis-plugin .post_options{
+	margin:10px;
+}
+#diagnosis-plugin .cont{
+	margin:10px 5px 10px 5px;
+}
+#diagnosis-plugin .cont .dh{
+	margin:5px 0 5px 0;padding-left:5px;font-weight:bold;font-size:120%;border-left:10px #ccc solid;
+}
+#diagnosis-plugin .cont .dh small, #diagnosis-plugin .pointer-l{
+	margin-left:15px;font-weight:normal;
+	text-decoration:underline;color:blue;cursor:pointer;
+}
+#diagnosis-plugin .pointer{
+	font-weight:normal;text-decoration:underline;color:blue;cursor:pointer;
+}
+#diagnosis-plugin .cont .green{
+	padding:3px;background:#E7F1ED;
+	min-width:600px;max-width:90%;
+	*width:600px;_width:600px;
+}
+.diagnosis-input, .question-input{
+	min-width:600px;
+	*width:600px;_width:600px;
+}
+.diagnosis-input textarea, .question-input textarea, .diagnosis-input #tags-box, .diagnosis-input .box{
+	-moz-border-radius:10px;-webkit-border-radius:10px;
+	border-radius:10px;border:1px #ccc solid;
+}
+.diagnosis-input textarea{
+	width:60%;height:150px;
+}
+.diagnosis-input .box{
+	margin-left:5px;padding:0;width:30%;height:150px;background-color:#DCDCDC;
+	text-align:center;
+}
+.diagnosis-input .box p{
+	margin:5px 5px 5px 5px;padding:0;
+}
+.diagnosis-input #tags-box span{
+	-moz-border-radius:7px;-webkit-border-radius:7px;
+	border-radius:7px;border:1px #ccc solid;display:block;width:55px;float:left;
+	margin:3px 3px 0 3px;padding:3px 0 3px 0;background-color:white;font-size:12px;
+}
+.diagnosis-input .condition{
+	padding:3px 0 0 5px;width:38%;position:relative;
+}
+.diagnosis-input .condition .chd{
+	font-weight:bold;
+	position:absolute;top:-17px;left:3px;
+}
+.diagnosis-input .condition p{
+	margin:0;padding:0;
+}
+.diagnosis-input .condition .inp{
+	width:35px;
+}
+.diagnosis-input .condition .plus-condition{
+	-moz-border-radius:10px;-webkit-border-radius:10px;
+	border-radius:10px;border:1px #ccc solid;
+	margin:3px 0 0 5px;font-size:90%;background-color:white;
+}
+.question-input .question-box{
+	width:98%;
+}
+.question-input .textarea-text{
+	padding-right:2px;width:40%;
+}
+.question-input .textarea-choice{
+	padding-right:2px;width:40%;
+}
+.question-input .textarea-point{
+	width:18%;
+}
+.question-input .textarea-text textarea, .question-input .textarea-choice textarea, .question-input .textarea-point textarea{
+	width:100%;height:110px;
+}
+.question-input .textarea-text textarea::-webkit-input-placeholder::after {
+	display: block;
+}
+.question-input .dhq{
+	border:0px !important;font-size:110% !important;
+}
+.diagnosis-input .left, .question-input .left{
+	float:left;
+}
+.diagnosis-contents .short-tag textarea, .diagnosis-contents .scode-area textarea{
+	-moz-border-radius:10px;-webkit-border-radius:10px;
+	border-radius:10px;border:1px #ccc solid;
+	padding:0 15px 0 15px;color:black !important;width:480px;height:25px;
+}
+.diagnosis-contents #result-shortcode{
+	padding-left:85px;
+	position:relative;
+}
+.diagnosis-contents #result-shortcode textarea{
+	width:395px;
+}
+.diagnosis-contents #result-shortcode span{
+	-moz-border-radius:10px 0 0 10px;-webkit-border-radius:10px 0 0 10px;
+	border-radius:10px 0 0 10px;border:1px #ccc solid;
+	padding:2px 0 0 10px;font-size:13px;display:block;width:80px;height:21px;background:#ccc;
+	position:absolute;top:1px;left:0px;z-index:1;
+}
+.diagnosis-contents .list-box{
+	margin:45px 0 0 0;
+	position:relative;
+}
+.diagnosis-contents .list-box .mbox{
+	-moz-border-radius:10px;-webkit-border-radius:10px;
+	border-radius:10px;border:1px #ccc solid;
+}
+.diagnosis-contents .list-head{
+	height:30px;
+	position:absolute;top:-30px;left:10px;z-index:1;
+}
+.diagnosis-contents .list-head span{
+	margin:0 5px 0 0;padding:5px 10px 5px 10px;background:#ccc;height:30px;
+	display:block;float:left;
+}
+.diagnosis-contents .listBox{
+	margin:0 15px 15px 0;padding:5px 10px 10px 10px;background:#E8E8E8;
+	position:relative;z-index:5;
+}
+.diagnosis-contents .listBox .bar{
+	margin:5px 0 0 5px;padding:0;float:left;
+}
+.diagnosis-contents .listBox .bar span{
+	padding:5px;background-color:white;border:1px solid #ccc;
+	display:block;float:left;
+}
+.diagnosis-contents .listBox .bar .ht{
+	background:#FFFFE0;border-right:2px solid silver;text-align:center;
+	min-width:100px;_width:100px;*width:100px;
+}
+.diagnosis-contents .listBox .bar .data{
+	min-width:250px;_width:250px;*width:250px;
+}
+/*clearfix*/
+.clearfix:after{
+	content:".";display:block;height:0;font-size:0;
+	clear:both;visibility:hidden;
+}
+.clearfix{display:inline-block;}
+/* Hides from IE Mac \*/
+* html .clearfix{height: 1%;}
+.clearfix{display:block;}
+/* End Hack */

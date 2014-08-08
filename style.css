@@ -1,0 +1,42 @@
+#diagnosis-plugin{
+	width:100%;
+	text-align:center;
+}
+#diagnosis-plugin .diagnosis-wrap{
+	margin-left:auto;margin-right:auto;
+	min-width:300px;text-align:left;
+}
+#diagnosis-plugin .diagnosis-wrap .red_message{
+	color:red;
+}
+.plugin-copyright{
+	margin:15px 0 15px 0;font-size:12px;text-align:right;
+}
+.diagnosis-wrap .diagnosis-form form input{
+	-moz-border-radius:10px;-webkit-border-radius:10px;
+	border-radius:10px;border:1px #ccc solid;
+}
+.diagnosis-wrap .diagnosis-form .cols{
+	margin-right:5px;
+}
+.diagnosis-wrap .diagnosis-form .label label{
+	margin:0;padding:5px;min-width:100px;
+	_width:100px;*width:100px;
+}
+.diagnosis-wrap .diagnosis-form .cols input{
+	margin:0;padding:5px;min-width:200px;
+	_width:200px;*width:200px;
+}
+.diagnosis-wrap .diagnosis-form .submit input{
+	margin:0;padding:5px;min-width:130px;height:30px;background:#E8E8E8;color:#000;
+	_width:130px;*width:130px;
+}
+.diagnosis-wrap .diagnosis-form .question{
+	margin:10px 0 10px 0;padding:0;
+}
+.diagnosis-wrap .diagnosis-form .question .qcontents{
+	font-weight:bold;
+}
+.diagnosis-form .question .qselect span{
+	margin:0 0 0 10px;padding:0;
+}
