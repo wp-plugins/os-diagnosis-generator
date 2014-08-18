@@ -1,9 +1,9 @@
 === 診断ジェネレータ作成プラグイン ===
 Contributors: olivesystem
-Tags: plugin,admin
+Tags: plugin,admin,診断
 Requires at least: 2.8
 Tested up to: 3.9
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 == Screenshots ==
 
 == Changelog ==
+
+= 1.0.1 =
+* 2014-08-18  診断フォーム内のヘッダ、フッタ表示修正。
 
 = 1.0.0 =
 * 2014-08-08  First release

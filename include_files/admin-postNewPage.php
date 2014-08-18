@@ -432,12 +432,12 @@ function view_message(ids, str){
 										$checked = self::post_set('after_header_flag', 1);
 										if(!empty($checked)){ $checked_page1 = ' checked'; $checked_page0 =''; }
 									?>
-									<textarea name="form_header" id="form_header" placeholder="診断フォームのヘッダーに表示したい文章を入力します" class="hfder"><?php self::post_set('form_header', 2); ?></textarea>
+									<textarea name="form_header" id="form_header" placeholder="診断フォームのヘッダーに表示したい文章を入力します" class="hfder"><?php self::post_set('form_header', 3); ?></textarea>
 									<br />
 									<input type="radio" name="after_header_flag" value="0" onclick="change_display_hf('after_header', 0)"<?php echo $checked_page0; ?> /><span onclick="change_display_hf('after_header', 0)">診断結果も同一ヘッダーを使用する</span>　
 									<input type="radio" name="after_header_flag" id="after_header_flag_b" value="1" onclick="change_display_hf('after_header', 1)"<?php echo $checked_page1; ?> /><span onclick="change_display_hf('after_header', 1)">使用しない</span>
 									<div id="after_header" style="display:none;">
-										<textarea name="form_after_header" id="form_after_header" placeholder="診断結果のヘッダーに表示したい文章を入力します" class="hfder"><?php self::post_set('form_after_header', 2); ?></textarea>
+										<textarea name="form_after_header" id="form_after_header" placeholder="診断結果のヘッダーに表示したい文章を入力します" class="hfder"><?php self::post_set('form_after_header', 3); ?></textarea>
 									</div>
 									<span onclick="view_message('view_message', 'fheader')" class="pointer setsu-m">説明</span>
 								</td>
@@ -451,12 +451,12 @@ function view_message(ids, str){
 										$checked = self::post_set('after_footer_flag', 1);
 										if(!empty($checked)){ $checked_page1 = ' checked'; $checked_page0 =''; }
 									?>
-									<textarea name="form_footer" id="form_footer" placeholder="診断フォームのフッターに表示したい文章を入力します" class="hfder"><?php self::post_set('form_footer', 2); ?></textarea>
+									<textarea name="form_footer" id="form_footer" placeholder="診断フォームのフッターに表示したい文章を入力します" class="hfder"><?php self::post_set('form_footer', 3); ?></textarea>
 									<br />
 									<input type="radio" name="after_footer_flag" value="0" onclick="change_display_hf('after_footer', 0)"<?php echo $checked_page0; ?> /><span onclick="change_display_hf('after_footer', 0)">診断結果も同一フッターを使用する</span>　
 									<input type="radio" name="after_footer_flag" id="after_footer_flag_b" value="1" onclick="change_display_hf('after_footer', 1)"<?php echo $checked_page1; ?> /><span onclick="change_display_hf('after_footer', 1)">使用しない</span>
 									<div id="after_footer" style="display:none;">
-										<textarea name="form_after_footer" id="form_after_footer" placeholder="診断結果のフッターに表示したい文章を入力します" class="hfder"><?php self::post_set('form_after_footer', 2); ?></textarea>
+										<textarea name="form_after_footer" id="form_after_footer" placeholder="診断結果のフッターに表示したい文章を入力します" class="hfder"><?php self::post_set('form_after_footer', 3); ?></textarea>
 									</div>
 									<span onclick="view_message('view_message', 'ffooter')" class="pointer setsu-m">説明</span>
 								</td>

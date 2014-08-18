@@ -202,14 +202,30 @@ class DiagnosisClass {
 		if(is_array($str)){
 			$return_data = array();
 			foreach($str as $key => $st){
-				$key = html_entity_decode($key, ENT_QUOTES, 'UTF-8');
-				$return_data[$key] = self::h_dec($st);
+				$return_data[$key] = self::h_entity_decode($st);
 			}
 		}else{
-			$return_data = html_entity_decode($str, ENT_QUOTES, 'UTF-8');
+			$return_data = self::h_entity_decode($str);
 		}
 
 		return $return_data;
+
+	}
+	// 上記で使用
+	private function h_entity_decode($str){
+
+		$str = html_entity_decode($str, ENT_QUOTES, 'UTF-8');
+		$str = self::h_entity_decode_change($str);
+		return $str;
+
+	}
+	// 上記で使用
+	private function h_entity_decode_change($str){
+
+		$check_arr = array('\"', "\&quot;", "\'", "\&#039;");
+		$change_arr = array('"', '"', "'", "'");
+		$str = str_replace($check_arr, $change_arr, $str);
+		return $str;
 
 	}
 	// POSTをエスケープして返す
@@ -377,10 +393,15 @@ class DiagnosisClass {
 			if($type=='1'){
 				return self::h($post[$key]);
 			}else{
-				if($type=='2'){
-					echo $post[$key];
-				}else{
-					echo self::h($post[$key]);
+				switch($type){
+					case '3':
+						echo self::h_entity_decode_change($post[$key]);
+						break;
+					case '2':
+						echo $post[$key];
+						break;
+					default:
+						echo self::h($post[$key]);
 				}
 			}
 		}else{
@@ -433,10 +454,15 @@ class DiagnosisClass {
 			}else{
 				$value = $post[$key];
 				if(!is_array($value)){ // 配列じゃなければ
-					if($type=='2'){
-						echo $post[$key];
-					}else{
-						echo self::h($post[$key]);
+					switch($type){
+						case '3':
+							echo self::h_entity_decode_change($post[$key]);
+							break;
+						case '2':
+							echo $post[$key];
+							break;
+						default:
+							echo self::h($post[$key]);
 					}
 				}
 			}
