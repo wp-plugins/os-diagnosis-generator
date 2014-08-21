@@ -46,6 +46,58 @@ class DiagnosisResultClass extends DiagnosisClass {
 				$result_text = str_replace($check, trim($change), $result_text);
 			}
 		}
+		// HTML用のタグを変換 ======================================= start
+		// h1～h5タグ
+		if(preg_match_all('/(\[|\[\/)h([1-5])\]/i', $result_text, $tag_match)){
+			foreach($tag_match[0] as $key => $val){
+				if(!empty($tag_match[2]) && !empty($tag_match[2][$key])){
+					if(stristr($val, "/")){
+						$replace_str = '</h'.trim($tag_match[2][$key]).'>';
+					}else{
+						$replace_str = '<h'.trim($tag_match[2][$key]).'>';
+					}
+					$result_text = str_replace($val, $replace_str, $result_text);
+				}
+			}
+			unset($tag_match);
+		}
+		// カラータグ
+		// 開始タグ
+		if(preg_match_all('/\[color:([a-zA-Z0-5#]+)\]/i', $result_text, $tag_match)){
+			foreach($tag_match[0] as $key => $val){
+				if(!empty($tag_match[1]) && !empty($tag_match[1][$key])){
+					$color = $tag_match[1][$key];
+					$result_text = str_replace($val, '<span style="color:'.$color.';">', $result_text);
+				}
+			}
+			unset($tag_match);
+		}
+		// 閉じタグ
+		if(preg_match_all('/\[\/color\]/i', $result_text, $tag_match)){
+			foreach($tag_match[0] as $key => $val){
+				$result_text = str_replace($val, '</span>', $result_text);
+			}
+			unset($tag_match);
+		}
+		// フォントサイズ
+		// 開始タグ
+		if(preg_match_all('/\[size:([0-9]+)\]/i', $result_text, $tag_match)){
+			foreach($tag_match[0] as $key => $val){
+				if(!empty($tag_match[1]) && !empty($tag_match[1][$key])){
+					$size = $tag_match[1][$key];
+					$result_text = str_replace($val, '<span style="font-size:'.$size.'px;">', $result_text);
+				}
+			}
+			unset($tag_match);
+		}
+		// 閉じタグ
+		if(preg_match_all('/\[\/size\]/i', $result_text, $tag_match)){
+			foreach($tag_match[0] as $key => $val){
+				$result_text = str_replace($val, '</span>', $result_text);
+			}
+			unset($tag_match);
+		}
+		// HTML用のタグを変換 ======================================= end
 		// 画像
 		if(!empty($data['display_flag']) && !empty($data['result_type_flag'])){
 			$image_data = '';

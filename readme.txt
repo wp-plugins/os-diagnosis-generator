@@ -3,7 +3,7 @@ Contributors: olivesystem
 Tags: plugin,admin,診断
 Requires at least: 2.8
 Tested up to: 3.9
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 == Screenshots ==
 
 == Changelog ==
+
+= 1.0.2 =
+* 2014-08-21  診断結果にH1～H5タグを使用できるタグ追加。フォントカラーを指定できるタグ追加。フォントサイズを指定できるタグを追加。
 
 = 1.0.1 =
 * 2014-08-18  診断フォーム内のヘッダ、フッタ表示修正。
