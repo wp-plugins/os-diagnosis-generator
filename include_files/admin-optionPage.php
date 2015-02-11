@@ -32,6 +32,7 @@ function click_views_none(ids){
 </script>
 
 	<div id="diagnosis-plugin">
+	<?php include_once(OSDG_PLUGIN_INCLUDE_FILES."/admin-head.php"); ?>
 		<div class="diagnosis-wrap">
 			<h2>オプション</h2>
 			<div class="diagnosis-contents">

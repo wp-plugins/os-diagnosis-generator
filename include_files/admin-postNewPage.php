@@ -16,257 +16,10 @@ if(class_exists('DiagnosisAdmin')){
 
 ?>
 
-<script>
-// 読み込み時の動作
-j(document).ready(function(){
-	// 詳細設定の表示 /////////////////////////////////
-	var display_flag = j('#display_flag').val();
-	if(display_flag==1){
-		table_display(display_flag);
-		result_page_view(0);
-		etc_view();
-	}
-	// 設問 /////////////////////////////////
-	if(j('#diagnosis_type1').is(':checked')){
-		change_display_question(1);
-		var diagnosis_count = j('#diagnosis_count').val(); // 設問数
-		change_display_question_count(diagnosis_count);
-		j('.condition').css('display', 'block');
-	}
-	j("#diagnosis_count").change(function(){
-		var str = j(this).val();
-		change_display_question_count(str);
-	});
-	// Text5～10の表示 /////////////////////////////////
-	var textgo = j('#textgoInp').val();
-	if(textgo==1){
-		display_textarea();
-	}
-});
-function table_display(str){
-	if(str==0){
-		j('.display_option').css('display', 'none');
-		j('#display_flag').val(0);
-		result_page_view(-1);
-		change_display_val('image-textarea', 'result_type_flag', 2)
-		j('#image-textarea').css('display', 'none');
-	}else{
-		j('.display_option').css('display', 'table-row');
-		j('#display_flag').val(1);
-		etc_view();
-	}
-}
-// 診断結果表示の別URLの表示
-function result_page_view(str){
-	if(str==1){
-		change_display_val('result_url_tr', 'result_page', 1);
-		j('#result-shortcode').css('display', 'block');
-	}
-	else if(str==-1){
-		change_display_val('result_url_tr', 'result_page', 0);
-		j('#result-shortcode').css('display', 'none');
-	}
-	else{
-		if(j('#result_page_a').is(':checked')){
-			j('#result_url_tr').css('display', 'none');
-			j('#result-shortcode').css('display', 'none');
-		}
-		if(j('#result_page_b').is(':checked')){
-			j('#result_url_tr').css('display', 'table-row');
-			j('#result-shortcode').css('display', 'block');
-		}
-	}
-}
-// 諸々表示
-function etc_view(){
-	//
-	if(j('#after_header_flag_b').is(':checked')){
-		j('#after_header').css('display', 'block');
-	}
-	if(j('#after_footer_flag_b').is(':checked')){
-		j('#after_footer').css('display', 'block');
-	}
-	// Image1の表示
-	if(j('#rtype_flag_b').is(':checked')){
-		j('#image-textarea').css('display', 'block');
-	}
-}
-function change_display_val(ids1, ids2, str){
-	if(str==0){
-		j('#'+ids1).css('display', 'none');
-		j("input[name='"+ids2+"']:eq(0)").attr("checked", true);
-	}
-	else if(str==1){
-		j('#'+ids1).css('display', 'table-row');
-		j("input[name='"+ids2+"']:eq(1)").attr("checked", true);
-	}
-	else if(str==2){
-		j('#'+ids1).css('display', 'none');
-		j("input[name='"+ids2+"']:eq(0)").attr("checked", true);
-	}
-	else if(str==3){
-		j('#'+ids1).css('display', 'block');
-		j("input[name='"+ids2+"']:eq(1)").attr("checked", true);
-	}
-}
-function change_checked(ids, str){
-	j("input[name='"+ids+"']:eq("+str+")").attr("checked", true);
-}
-function change_display_question(str){
-	if(str==0){
-		change_display_val('question_view', 'diagnosis_type', 0);
-		j('#diagnosis_count_tr').css('display', 'none');
-		j('.condition').css('display', 'none');
-	}
-	else{
-		change_display_val('question_view', 'diagnosis_type', 3);
-		j('#diagnosis_count_tr').css('display', 'table-row');
-		j('.condition').css('display', 'block');
-	}
-}
-function change_display_question_count(str){
-	if(str==5){
-		j('.q-zero').css('display', 'block');
-		j('.q-five').css('display', 'none');
-		j('.q-ten').css('display', 'none');
-		j('.q-twfive').css('display', 'none');
-	}
-	else if(str==10){
-		j('.q-zero').css('display', 'block');
-		j('.q-five').css('display', 'block');
-		j('.q-ten').css('display', 'none');
-		j('.q-twfive').css('display', 'none');
-	}
-	else if(str==25){
-		j('.q-zero').css('display', 'block');
-		j('.q-five').css('display', 'block');
-		j('.q-ten').css('display', 'block');
-		j('.q-twfive').css('display', 'none');
-	}
-	else if(str==50){
-		j('.q-zero').css('display', 'block');
-		j('.q-five').css('display', 'block');
-		j('.q-ten').css('display', 'block');
-		j('.q-twfive').css('display', 'block');
-	}
-}
-function change_display_hf(id, str){
-	if(str==0){ // 表示
-		change_display_val(id, id+'_flag', 2);
-	}
-	else{ // 非表示
-		change_display_val(id, id+'_flag', 3);
-	}
-}
-function textarea_in(str){
-	var now_text = j('#diagnosis-text').text();
-	j('#diagnosis-text').text(now_text+'['+str+']');
-}
-function textarea_inh(str, str_style){
-	var now_text = j('#diagnosis-text').text();
-	if(str_style){
-		j('#diagnosis-text').text(now_text+'['+str+':'+str_style+'][/'+str+']');
-	}else{
-		j('#diagnosis-text').text(now_text+'['+str+'][/'+str+']');
-	}
-}
-function textarea_default(ids){
-	var vtext = '';
-	if(ids=='diagnosis-text'){
-		vtext = "[Name]は[Text1]で[Text2]です。\n[Text3]で[Text4]になるでしょう。";
-	}
-	j('#'+ids).text(vtext);
-}
-function display_textarea(){
-	display_block('cutText');
-	display_block('textno');
-	display_none('textgo');
-	j('#textgoInp').val(1);
-}
-function display_textarea_none(){
-	display_block('textgo');
-	display_none('cutText');
-	display_none('textno');
-	j('#textgoInp').val(0);
-}
-function condition_plus(ids, str){
-	var i = parseInt(j('#condition_ct'+str).val());
-	var num = i + 1;
-	var id_html = j('#'+ids).html();
-	var plus = '<p>'+num+'行目：<input type="text" name="before_condition['+str+']['+num+']" placeholder="" value="" class="inp">点以上<input type="text" name="after_condition['+str+']['+num+']" placeholder="" value="" class="inp">点未満</p>';
-	j('#'+ids).html(id_html+plus);
-	j('#condition_ct'+str).val(num);
-}
-function checkbox_onoff(ids){
-	if(j('#'+ids).is(':checked')){
-		j('#'+ids).attr("checked", false);
-	}
-	else{
-		j('#'+ids).attr("checked", true);
-	}
-}
-function view_message(ids, str){
-	var vtext = '';
-	// 診断の基本設定
-	if(str=='title'){
-		vtext = '診断フォームのタイトルを入力します。必須項目です。';
-	}
-	if(str=='label'){
-		vtext = '診断フォームの入力欄のラベルを入力します。ラベルを空にすればラベルは表示されません。';
-	}
-	if(str=='placeholder'){
-		vtext = '診断フォームの入力欄に表示するプレースホルダを入力します。';
-	}
-	if(str=='submit'){
-		vtext = '診断フォームの送信ボタンに表示するテキストを入力します。空の場合はデフォルトの「診断する」を適用します。';
-	}
-	if(str=='authority'){
-		vtext = '診断を実行できるユーザは、登録ユーザのみかゲストを含んだ全てのユーザか設定します。';
-	}
-	if(str=='diagnosis_type'){
-		vtext = '診断方法を選択します。[診断はシステムに任せる]を選択すると、ユーザからの名前入力をもとに当システムが自動診断します。 [診断を設問形式にする]を選択すると、設問、選択肢、点数、点数による診断結果の設定が必要です。';
-	}
-	if(str=='diagnosis_count'){
-		vtext = '診断に使用する設問数を選択します。最大は50問です。';
-	}
-	if(str=='rpage'){
-		vtext = '診断結果を診断フォームの埋め込み先に表示するなら「同一ページに表示する」を選択、埋め込み先とは別のページに診断結果を埋め込むなら「別ページに表示する」を選択する。別ページにした場合は、該当記事に必ず結果表示用のショートコードを埋め込んでください。';
-	}
-	if(str=='rurl'){
-		vtext = '「別ページに表示する」を選択した場合、こちらは必ず設定してください。診断後にリダイレクトされます。';
-	}
-	if(str=='class'){
-		vtext = '診断フォームをdivタグで囲みますが、そのdivタグのclassの指定です。複数指定する場合は半角スペースで区切ってください。';
-	}
-	if(str=='rtype'){
-		vtext = '診断結果に画像を含ませる場合は「画像を含ませる」を選択してください。画像は診断結果のテキストの上に表示されます。';
-	}
-	if(str=='fheader'){
-		vtext = 'フォームのヘッダー部分に表示します。診断フォームより上に表示されます。フォームの説明文などによいでしょう。';
-	}
-	if(str=='ffooter'){
-		vtext = 'フォームのフッター部分に表示します。診断フォームより下に表示されます。診断作成者のサイトやSNSリンクによいでしょう。';
-	}
-	//　診断結果を設定
-	if(ids=='push_message0'){
-		vtext = 'ユーザに表示する診断結果テキストの全文を入力します。可変するテキストは[Text1]というタグで制御します。';
-	}
-	if(ids=='push_message1' || ids=='push_message2' || ids=='push_message3' || ids=='push_message4' || ids=='push_message5' || ids=='push_message6' || ids=='push_message7' || ids=='push_message8' || ids=='push_message9' || ids=='push_message10'){
-		vtext = '一行ずつ、診断結果のテキストを入力します。最大3,000文字まで記述できます。';
-	}
-	if(ids=='push_messageImage'){
-		vtext = 'ユーザに表示する画像のURLもしくは画像パスを入力します。';
-	}
-	if(ids=='push_questionView'){
-		vtext = '設問文は、診断に必要なユーザへの質問文章を入力します。<br />選択肢は、その設問文に対する選択肢を入力します。一行ずつ入力してください。選択肢が3つなら3行になります。<br />点数は、選択肢ごとの点数を入力します。選択肢1に5点なら一行目に「5」を入力します。';
-	}
-	open_message(ids, vtext);
-}
-</script>
-
 <?php if(isset($error_jscript)){ echo $error_jscript; } ?>
 
 	<div id="diagnosis-plugin">
+	<?php include_once(OSDG_PLUGIN_INCLUDE_FILES."/admin-head.php"); ?>
 		<div class="diagnosis-wrap">
 		<?php if(isset($write_id)): ?>
 			<h2>診断フォームを編集</h2>
@@ -546,7 +299,7 @@ function view_message(ids, str){
 							<textarea name="result_text" id="diagnosis-text" class="left"><?php echo $result_text; ?></textarea>
 							<div id="tags-box" class="box left">
 								<p>クリックで追加</p>
-								<span onclick="textarea_in('Name')">Name</span><span onclick="textarea_in('Text1')">Text1</span><span onclick="textarea_in('Text2')">Text2</span><span onclick="textarea_in('Text3')">Text3</span><span onclick="textarea_in('Text4')">Text4</span><span onclick="textarea_in('Text5')">Text5</span><span onclick="textarea_in('Text6')">Text6</span><span onclick="textarea_in('Text7')">Text7</span><span onclick="textarea_in('Text8')">Text8</span><span onclick="textarea_in('Text9')">Text9</span><span onclick="textarea_in('Text10')">Text10</span><span onclick="textarea_inh('H1')">H1</span><span onclick="textarea_inh('H2')">H2</span><span onclick="textarea_inh('H3')">H3</span><span onclick="textarea_inh('COLOR', 'red')">COLOR</span><span onclick="textarea_inh('SIZE', '20')">SIZE</span>
+								<span onclick="textarea_in('Name')">Name</span><span onclick="textarea_in('Text1')">Text1</span><span onclick="textarea_in('Text2')">Text2</span><span onclick="textarea_in('Text3')">Text3</span><span onclick="textarea_in('Text4')">Text4</span><span onclick="textarea_in('Text5')">Text5</span><span onclick="textarea_in('Text6')">Text6</span><span onclick="textarea_in('Text7')">Text7</span><span onclick="textarea_in('Text8')">Text8</span><span onclick="textarea_in('Text9')">Text9</span><span onclick="textarea_in('Text10')">Text10</span><span onclick="textarea_inh('H1')">H1</span><span onclick="textarea_inh('H2')">H2</span><span onclick="textarea_inh('H3')">H3</span><span onclick="textarea_inh('COLOR', 'red')">COLOR</span><span onclick="textarea_inh('SIZE', '20')">SIZE</span><span onclick="textarea_inh('LINK', 'http://')">LINK</span>
 							</div>
 						</div>
 						<br />
@@ -694,7 +447,253 @@ function view_message(ids, str){
 			</div>
 		</div>
 	</div>
-
+<script>
+// 読み込み時の動作
+j(document).ready(function(){
+	// 詳細設定の表示 /////////////////////////////////
+	var display_flag = j('#display_flag').val();
+	if(display_flag==1){
+		table_display(display_flag);
+		result_page_view(0);
+		etc_view();
+	}
+	// 設問 /////////////////////////////////
+	if(j('#diagnosis_type1').is(':checked')){
+		change_display_question(1);
+		var diagnosis_count = j('#diagnosis_count').val(); // 設問数
+		change_display_question_count(diagnosis_count);
+		j('.condition').css('display', 'block');
+	}
+	j("#diagnosis_count").change(function(){
+		var str = j(this).val();
+		change_display_question_count(str);
+	});
+	// Text5～10の表示 /////////////////////////////////
+	var textgo = j('#textgoInp').val();
+	if(textgo==1){
+		display_textarea();
+	}
+});
+function table_display(str){
+	if(str==0){
+		j('.display_option').css('display', 'none');
+		j('#display_flag').val(0);
+		result_page_view(-1);
+		change_display_val('image-textarea', 'result_type_flag', 2)
+		j('#image-textarea').css('display', 'none');
+	}else{
+		j('.display_option').css('display', 'table-row');
+		j('#display_flag').val(1);
+		etc_view();
+	}
+}
+// 診断結果表示の別URLの表示
+function result_page_view(str){
+	if(str==1){
+		change_display_val('result_url_tr', 'result_page', 1);
+		j('#result-shortcode').css('display', 'block');
+	}
+	else if(str==-1){
+		change_display_val('result_url_tr', 'result_page', 0);
+		j('#result-shortcode').css('display', 'none');
+	}
+	else{
+		if(j('#result_page_a').is(':checked')){
+			j('#result_url_tr').css('display', 'none');
+			j('#result-shortcode').css('display', 'none');
+		}
+		if(j('#result_page_b').is(':checked')){
+			j('#result_url_tr').css('display', 'table-row');
+			j('#result-shortcode').css('display', 'block');
+		}
+	}
+}
+// 諸々表示
+function etc_view(){
+	//
+	if(j('#after_header_flag_b').is(':checked')){
+		j('#after_header').css('display', 'block');
+	}
+	if(j('#after_footer_flag_b').is(':checked')){
+		j('#after_footer').css('display', 'block');
+	}
+	// Image1の表示
+	if(j('#rtype_flag_b').is(':checked')){
+		j('#image-textarea').css('display', 'block');
+	}
+}
+function change_display_val(ids1, ids2, str){
+	if(str==0){
+		j('#'+ids1).css('display', 'none');
+		j("input[name='"+ids2+"']:eq(0)").attr("checked", true);
+	}
+	else if(str==1){
+		j('#'+ids1).css('display', 'table-row');
+		j("input[name='"+ids2+"']:eq(1)").attr("checked", true);
+	}
+	else if(str==2){
+		j('#'+ids1).css('display', 'none');
+		j("input[name='"+ids2+"']:eq(0)").attr("checked", true);
+	}
+	else if(str==3){
+		j('#'+ids1).css('display', 'block');
+		j("input[name='"+ids2+"']:eq(1)").attr("checked", true);
+	}
+}
+function change_checked(ids, str){
+	j("input[name='"+ids+"']:eq("+str+")").attr("checked", true);
+}
+function change_display_question(str){
+	if(str==0){
+		change_display_val('question_view', 'diagnosis_type', 0);
+		j('#diagnosis_count_tr').css('display', 'none');
+		j('.condition').css('display', 'none');
+	}
+	else{
+		change_display_val('question_view', 'diagnosis_type', 3);
+		j('#diagnosis_count_tr').css('display', 'table-row');
+		j('.condition').css('display', 'block');
+	}
+}
+function change_display_question_count(str){
+	if(str==5){
+		j('.q-zero').css('display', 'block');
+		j('.q-five').css('display', 'none');
+		j('.q-ten').css('display', 'none');
+		j('.q-twfive').css('display', 'none');
+	}
+	else if(str==10){
+		j('.q-zero').css('display', 'block');
+		j('.q-five').css('display', 'block');
+		j('.q-ten').css('display', 'none');
+		j('.q-twfive').css('display', 'none');
+	}
+	else if(str==25){
+		j('.q-zero').css('display', 'block');
+		j('.q-five').css('display', 'block');
+		j('.q-ten').css('display', 'block');
+		j('.q-twfive').css('display', 'none');
+	}
+	else if(str==50){
+		j('.q-zero').css('display', 'block');
+		j('.q-five').css('display', 'block');
+		j('.q-ten').css('display', 'block');
+		j('.q-twfive').css('display', 'block');
+	}
+}
+function change_display_hf(id, str){
+	if(str==0){ // 表示
+		change_display_val(id, id+'_flag', 2);
+	}
+	else{ // 非表示
+		change_display_val(id, id+'_flag', 3);
+	}
+}
+function textarea_in(str){
+	var now_text = j('#diagnosis-text').text();
+	j('#diagnosis-text').text(now_text+'['+str+']');
+}
+function textarea_inh(str, str_style){
+	var now_text = j('#diagnosis-text').text();
+	if(str_style){
+		j('#diagnosis-text').text(now_text+'['+str+':'+str_style+'][/'+str+']');
+	}else{
+		j('#diagnosis-text').text(now_text+'['+str+'][/'+str+']');
+	}
+}
+function textarea_default(ids){
+	var vtext = '';
+	if(ids=='diagnosis-text'){
+		vtext = "[Name]は[Text1]で[Text2]です。\n[Text3]で[Text4]になるでしょう。";
+	}
+	j('#'+ids).text(vtext);
+}
+function display_textarea(){
+	display_block('cutText');
+	display_block('textno');
+	display_none('textgo');
+	j('#textgoInp').val(1);
+}
+function display_textarea_none(){
+	display_block('textgo');
+	display_none('cutText');
+	display_none('textno');
+	j('#textgoInp').val(0);
+}
+function condition_plus(ids, str){
+	var i = parseInt(j('#condition_ct'+str).val());
+	var num = i + 1;
+	var id_html = j('#'+ids).html();
+	var plus = '<p>'+num+'行目：<input type="text" name="before_condition['+str+']['+num+']" placeholder="" value="" class="inp">点以上<input type="text" name="after_condition['+str+']['+num+']" placeholder="" value="" class="inp">点未満</p>';
+	j('#'+ids).html(id_html+plus);
+	j('#condition_ct'+str).val(num);
+}
+function checkbox_onoff(ids){
+	if(j('#'+ids).is(':checked')){
+		j('#'+ids).attr("checked", false);
+	}
+	else{
+		j('#'+ids).attr("checked", true);
+	}
+}
+function view_message(ids, str){
+	var vtext = '';
+	// 診断の基本設定
+	if(str=='title'){
+		vtext = '診断フォームのタイトルを入力します。必須項目です。';
+	}
+	if(str=='label'){
+		vtext = '診断フォームの入力欄のラベルを入力します。ラベルを空にすればラベルは表示されません。';
+	}
+	if(str=='placeholder'){
+		vtext = '診断フォームの入力欄に表示するプレースホルダを入力します。';
+	}
+	if(str=='submit'){
+		vtext = '診断フォームの送信ボタンに表示するテキストを入力します。空の場合はデフォルトの「診断する」を適用します。';
+	}
+	if(str=='authority'){
+		vtext = '診断を実行できるユーザは、登録ユーザのみかゲストを含んだ全てのユーザか設定します。';
+	}
+	if(str=='diagnosis_type'){
+		vtext = '診断方法を選択します。[診断はシステムに任せる]を選択すると、ユーザからの名前入力をもとに当システムが自動診断します。 [診断を設問形式にする]を選択すると、設問、選択肢、点数、点数による診断結果の設定が必要です。';
+	}
+	if(str=='diagnosis_count'){
+		vtext = '診断に使用する設問数を選択します。最大は50問です。';
+	}
+	if(str=='rpage'){
+		vtext = '診断結果を診断フォームの埋め込み先に表示するなら「同一ページに表示する」を選択、埋め込み先とは別のページに診断結果を埋め込むなら「別ページに表示する」を選択する。別ページにした場合は、該当記事に必ず結果表示用のショートコードを埋め込んでください。';
+	}
+	if(str=='rurl'){
+		vtext = '「別ページに表示する」を選択した場合、こちらは必ず設定してください。診断後にリダイレクトされます。';
+	}
+	if(str=='class'){
+		vtext = '診断フォームをdivタグで囲みますが、そのdivタグのclassの指定です。複数指定する場合は半角スペースで区切ってください。';
+	}
+	if(str=='rtype'){
+		vtext = '診断結果に画像を含ませる場合は「画像を含ませる」を選択してください。画像は診断結果のテキストの上に表示されます。';
+	}
+	if(str=='fheader'){
+		vtext = 'フォームのヘッダー部分に表示します。診断フォームより上に表示されます。フォームの説明文などによいでしょう。';
+	}
+	if(str=='ffooter'){
+		vtext = 'フォームのフッター部分に表示します。診断フォームより下に表示されます。診断作成者のサイトやSNSリンクによいでしょう。';
+	}
+	//　診断結果を設定
+	if(ids=='push_message0'){
+		vtext = 'ユーザに表示する診断結果テキストの全文を入力します。可変するテキストは[Text1]というタグで制御します。';
+	}
+	if(ids=='push_message1' || ids=='push_message2' || ids=='push_message3' || ids=='push_message4' || ids=='push_message5' || ids=='push_message6' || ids=='push_message7' || ids=='push_message8' || ids=='push_message9' || ids=='push_message10'){
+		vtext = '一行ずつ、診断結果のテキストを入力します。最大3,000文字まで記述できます。';
+	}
+	if(ids=='push_messageImage'){
+		vtext = 'ユーザに表示する画像のURLもしくは画像パスを入力します。';
+	}
+	if(ids=='push_questionView'){
+		vtext = '設問文は、診断に必要なユーザへの質問文章を入力します。<br />選択肢は、その設問文に対する選択肢を入力します。一行ずつ入力してください。選択肢が3つなら3行になります。<br />点数は、選択肢ごとの点数を入力します。選択肢1に5点なら一行目に「5」を入力します。';
+	}
+	open_message(ids, vtext);
+}
+</script>
 <?php
 }
 ?>

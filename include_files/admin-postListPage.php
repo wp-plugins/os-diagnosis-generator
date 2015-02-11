@@ -17,6 +17,7 @@ function view_div(ids, str){
 </script>
 
 	<div id="diagnosis-plugin">
+	<?php include_once(OSDG_PLUGIN_INCLUDE_FILES."/admin-head.php"); ?>
 		<div class="diagnosis-wrap">
 			<h2>診断フォーム一覧</h2>
 			<div class="diagnosis-contents">

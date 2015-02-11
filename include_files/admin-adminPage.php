@@ -2,13 +2,17 @@
 if(class_exists('DiagnosisAdmin')){
 ?>
 	<div id="diagnosis-plugin">
+	<?php include_once(OSDG_PLUGIN_INCLUDE_FILES."/admin-head.php"); ?>
 		<div class="diagnosis-wrap">
 			<h2>はじめに</h2>
 			<div class="diagnosis-contents">
 				<p>診断ジェネレータ作成プラグインを導入していただき、ありがとうございます。</p>
-				<p>当プラグインはJQueryを使用しております。JQueryの使用できない環境では利用できません。</p>
-				<p>当プラグインのご利用は非商用であれば無料で自由です。詳しくは、<a href="?page=diagnosis-generator-agreement.php">こちらの利用規約</a>をご覧ください。商用利用したい場合は必ずご連絡ください。</p>
+				<p>当プラグインのご利用は無料です。個人サイトでも商用サイトでも利用できますが、必ず<a href="?page=diagnosis-generator-agreement.php">利用規約</a>をご覧ください。</p>
 				<p>ご連絡は<a href="http://olivesystem.jp/lp/plugin-dg-mail" title="問い合わせ" target="_blank">問い合わせフォーム</a>からお願い致します。</p>
+			</div>
+			<h2>最低動作環境</h2>
+			<div class="diagnosis-contents">
+				WordPress2.8以上、JQuery1.7以上、ユーザのブラウザでJQueryが動作すること。
 			</div>
 			<h2>主な特徴</h2>
 			<div class="diagnosis-contents">
@@ -22,6 +26,10 @@ if(class_exists('DiagnosisAdmin')){
 			</div>
 			<h2>更新履歴</h2>
 			<div class="diagnosis-contents">
+				<p>2015.02.11 軽微な修正。診断結果にリンクを使用できるタグを追加。</p>
+				<p>2015.02.07 軽微な修正。利用規約を改定。</p>
+				<p>2014.08.21 診断結果にH1～H5タグを使用できるタグ追加。フォントカラーを指定できるタグ追加。フォントサイズを指定できるタグを追加。</p>
+				<p>2014.08.18 診断フォーム内のヘッダ、フッタ表示修正</p>
 				<p>2014.08.08 リリース</p>
 			</div>
 		</div>
