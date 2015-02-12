@@ -29,6 +29,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 == Changelog ==
 
 = 1.1.0 =
+* 2015-02-12  WP_DEBUGがtrue時に表示されるエラー箇所を修正。
 * 2015-02-11  軽微な修正。診断結果にリンクを使用できるタグを追加。
 
 = 1.0.3 =

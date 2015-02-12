@@ -34,9 +34,13 @@ class DiagnosisAdmin extends DiagnosisClass {
 	private function postAction(){
 
 		global $osdg_user_data; // ユーザデータ
+		$now_page = '';
 
+		if(isset($_GET['page'])){
+			$now_page = $_GET['page'];
+		}
 		// diagnosis-generatorの場合に実行
-		if(isset($_GET['page']) && (stristr($_GET['page'], "diagnosis-generator") || stristr($_POST['page'], "diagnosis-generator"))){
+		if(stristr($now_page, "diagnosis-generator") || stristr($now_page, "diagnosis-generator")){
 
 			// ゲストは管理画面を表示させない。トップページへ
 			if($osdg_user_data['level']=='guest'){
