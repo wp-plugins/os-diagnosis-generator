@@ -435,7 +435,7 @@ class DiagnosisResultClass extends DiagnosisClass {
 	//
 	public function encodeData(){
 
-		$data = '%0A%09%09%3Cdiv+class%3D%22plugin-copyright%22%3E%0A%09%09%09%3Ca+href%3D%22http%3A%2F%2Folivesystem.jp%2Flp%2Fplugin-dg%22+target%3D%22_blank%22+rel%3D%22nofollow%22%3E%E8%A8%BA%E6%96%AD%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E4%BD%9C%E6%88%90%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%3C%2Fa%3E%0A%09%09%3C%2Fdiv%3E%0A%09%09';
+		$data = '%0A%09%09%3Cdiv+class%3D%22plugin-copyright%22%3E%0A%09%09%09%3Ca+href%3D%22http%3A%2F%2Flp.olivesystem.jp%2Fplugin-dg%22+target%3D%22_blank%22+rel%3D%22nofollow%22%3E%E8%A8%BA%E6%96%AD%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E4%BD%9C%E6%88%90%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%3C%2Fa%3E%0A%09%09%3C%2Fdiv%3E%0A%09%09';
 		return $data;
 
 	}

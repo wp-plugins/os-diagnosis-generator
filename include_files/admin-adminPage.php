@@ -8,7 +8,7 @@ if(class_exists('DiagnosisAdmin')){
 			<div class="diagnosis-contents">
 				<p>診断ジェネレータ作成プラグインを導入していただき、ありがとうございます。</p>
 				<p>当プラグインのご利用は無料です。個人サイトでも商用サイトでも利用できますが、必ず<a href="?page=diagnosis-generator-agreement.php">利用規約</a>をご覧ください。</p>
-				<p>ご連絡は<a href="http://olivesystem.jp/lp/plugin-dg-mail" title="問い合わせ" target="_blank">問い合わせフォーム</a>からお願い致します。</p>
+				<p>ご連絡は<a href="http://lp.olivesystem.jp/plugin-dg-mail" title="問い合わせ" target="_blank">問い合わせフォーム</a>からお願い致します。</p>
 			</div>
 			<h2>最低動作環境</h2>
 			<div class="diagnosis-contents">
