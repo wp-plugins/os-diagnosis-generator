@@ -15,6 +15,7 @@ class DiagnosisResultClass extends DiagnosisClass {
 
 		$result_text = $data['result_text'];
 		$name = self::h(urldecode($get['osdgn']));
+		$point = self::h(urldecode($get['osdgpp']));
 		$list = explode(",", self::h($get['osdgl']));
 		$img_list = explode(",", self::h($get['osdgimg']));
 		// それぞれ置き換え処理
@@ -114,6 +115,13 @@ class DiagnosisResultClass extends DiagnosisClass {
 		if(preg_match_all('/\[\/link\]/i', $result_text, $tag_match)){
 			foreach($tag_match[0] as $key => $val){
 				$result_text = str_replace($val, '</a>', $result_text);
+			}
+			unset($tag_match);
+		}
+		// 点数タグ
+		if(preg_match_all('/\[point\]/i', $result_text, $tag_match)){
+			foreach($tag_match[0] as $key => $val){
+				$result_text = str_replace($val, $point, $result_text);
 			}
 			unset($tag_match);
 		}
@@ -293,9 +301,12 @@ class DiagnosisResultClass extends DiagnosisClass {
 				if(isset($point[$key]) && isset($point[$key]['point'])){
 					$point_data = $point[$key]['point'];
 					$point_line = explode("\n", trim($point_data));
+					$pl = $q - 1;
 					//
-					if(isset($point_line[$q])){
-						$points = $point_line[$q];
+					//if(isset($point_line[$q])){
+						//$points = $point_line[$q];
+					if(isset($point_line[$pl])){
+						$points = $point_line[$pl];
 					}else{
 						$points = 0;
 					}
@@ -345,7 +356,7 @@ class DiagnosisResultClass extends DiagnosisClass {
 
 		}
 
-		return array('line'=>$result_data, 'img'=>$img_result_data);
+		return array('line'=>$result_data, 'img'=>$img_result_data, 'point'=>$total);
 
 	}
 	// 診断処理 //////////////////////////// <=

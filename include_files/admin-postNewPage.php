@@ -286,8 +286,8 @@ if(class_exists('DiagnosisAdmin')){
 							<small onclick="textarea_default('diagnosis-text')">デフォルトに戻す</small>
 						</div>
 						<div>
-							使用できるタグ [Name]、[Text1]～[Text10]、[H1]～[H5]、[COLOR:色]、[SIZE:サイズ]<br />
-							H1～H5タグ、COLORタグ、SIZEタグは必ず閉じタグを入力してください（例：[H1]テキスト[/H1]）。
+							使用できるタグ [Name]、[Text1]～[Text10]、[H1]～[H5]、[COLOR:色]、[SIZE:サイズ]、[LINK]、[POINT]<br />
+							H1～H5タグ、COLORタグ、SIZEタグは必ず閉じタグを入力してください（例：[H1]テキスト[/H1]）。LINKはリンク、POINTは点数表示ができます。
 						</div>
 						<div id="push_message0"></div>
 						<div class="clearfix">
@@ -299,7 +299,7 @@ if(class_exists('DiagnosisAdmin')){
 							<textarea name="result_text" id="diagnosis-text" class="left"><?php echo $result_text; ?></textarea>
 							<div id="tags-box" class="box left">
 								<p>クリックで追加</p>
-								<span onclick="textarea_in('Name')">Name</span><span onclick="textarea_in('Text1')">Text1</span><span onclick="textarea_in('Text2')">Text2</span><span onclick="textarea_in('Text3')">Text3</span><span onclick="textarea_in('Text4')">Text4</span><span onclick="textarea_in('Text5')">Text5</span><span onclick="textarea_in('Text6')">Text6</span><span onclick="textarea_in('Text7')">Text7</span><span onclick="textarea_in('Text8')">Text8</span><span onclick="textarea_in('Text9')">Text9</span><span onclick="textarea_in('Text10')">Text10</span><span onclick="textarea_inh('H1')">H1</span><span onclick="textarea_inh('H2')">H2</span><span onclick="textarea_inh('H3')">H3</span><span onclick="textarea_inh('COLOR', 'red')">COLOR</span><span onclick="textarea_inh('SIZE', '20')">SIZE</span><span onclick="textarea_inh('LINK', 'http://')">LINK</span>
+								<span onclick="textarea_in('Name')">Name</span><span onclick="textarea_in('Text1')">Text1</span><span onclick="textarea_in('Text2')">Text2</span><span onclick="textarea_in('Text3')">Text3</span><span onclick="textarea_in('Text4')">Text4</span><span onclick="textarea_in('Text5')">Text5</span><span onclick="textarea_in('Text6')">Text6</span><span onclick="textarea_in('Text7')">Text7</span><span onclick="textarea_in('Text8')">Text8</span><span onclick="textarea_in('Text9')">Text9</span><span onclick="textarea_in('Text10')">Text10</span><span onclick="textarea_inh('H1')">H1</span><span onclick="textarea_inh('H2')">H2</span><span onclick="textarea_inh('H3')">H3</span><span onclick="textarea_inh('COLOR', 'red')">COLOR</span><span onclick="textarea_inh('SIZE', '20')">SIZE</span><span onclick="textarea_inh('LINK', 'http://')">LINK</span><span onclick="textarea_in('POINT')">POINT</span>
 							</div>
 						</div>
 						<br />

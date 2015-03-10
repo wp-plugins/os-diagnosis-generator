@@ -94,7 +94,9 @@ class DiagnosisView extends DiagnosisClass {
 							}else{
 								$jump_url = '';
 							}
-							$url = self::url_plus(array('osdgl'=>$return_data['line'], 'osdgimg'=>$return_data['img'], 'osdgid'=>$data_id, 'osdgn'=>$url_name), $jump_url);
+							//
+							$return_point = (isset($return_data['point'])) ? $return_data['point'] : '';
+							$url = self::url_plus(array('osdgl'=>$return_data['line'], 'osdgimg'=>$return_data['img'], 'osdgid'=>$data_id, 'osdgn'=>$url_name, 'osdgpp'=>$return_point), $jump_url);
 						}else{
 							$url = self::url_plus(array('msg'=>'dg-error'));
 						}
