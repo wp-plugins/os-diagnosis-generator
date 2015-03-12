@@ -245,14 +245,18 @@ class DiagnosisSqlClass extends DiagnosisClass {
 				}
 				// 空じゃなければ挿入する
 				if(!empty($post_data)){
+					$detail_value .= "( %s, %s, %s, %s, %s ),"; // [data_id]は後で数値idに変更
+					$detail_params[] = '[data_id]';
 					$d_key = self::data_key($text_i, $key);
+					$detail_params[] = $d_key;
+					$detail_params[] = $result_type;
 					// 設問条件
 					if(!empty($condition_line) && isset($condition_line[$d_key])){
 						$detail_params[] = $condition_line[$d_key];
 					}else{
 						$detail_params[] = '';
 					}
-					$detail_value .= "( '[data_id]', '".$d_key."', '".$result_type."', %s, %s ),"; // [data_id]は後で数値idに変更
+					//
 					$detail_params[] = $post_data;
 					//
 					if(!stristr($key, 'image')){
@@ -270,9 +274,17 @@ class DiagnosisSqlClass extends DiagnosisClass {
 		$wpdb->query( $wpdb->prepare($sql, $params) );
 		// インサートに成功したら、Text系をインサート
 		if($id = $wpdb->insert_id){
-			$detail_value = str_replace("[data_id]", $id, rtrim($detail_value, ","));
-			$detail_sql = "INSERT INTO `".OSDG_PLUGIN_DETAIL_TABLE_NAME."` ".$detail_into." VALUES ".$detail_value;
-			$wpdb->query( $wpdb->prepare($detail_sql, $detail_params) );
+			if(!empty($detail_value)){
+				// 変換
+				foreach($detail_params as $i => $d){
+					if($d==='[data_id]'){
+						$detail_params[$i] = $id;
+					}
+				}
+				//
+				$detail_sql = "INSERT INTO `".OSDG_PLUGIN_DETAIL_TABLE_NAME."` ".$detail_into." VALUES ".rtrim($detail_value, ",");
+				$wpdb->query( $wpdb->prepare($detail_sql, $detail_params) );
+			}
 			$return_id = $id;
 		}
 
@@ -489,14 +501,14 @@ class DiagnosisSqlClass extends DiagnosisClass {
 			$params = array();
 			//
 			foreach($pos as $key => $p){
-				$set_data = "`question_".self::sql_escape($key)."`= %s , ";
+				$set_data .= "`question_".self::sql_escape($key)."`= %s , ";
 				$params[] = $p;
 			}
 			//
 			$sql = "UPDATE `".OSDG_PLUGIN_QUESTION_TABLE_NAME."` SET ".rtrim($set_data, ", ")." WHERE `data_id`= %d AND `delete_flag`='0' AND `sort_id`= %d";
 			$params[] = $id;
 			$params[] = $t;
-			$wpdb->query( $wpdb->prepare($sql, $params) );
+			$result = $wpdb->query( $wpdb->prepare($sql, $params) );
 			unset($params);
 		}
 

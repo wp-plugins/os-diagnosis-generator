@@ -63,6 +63,9 @@ class DiagnosisMessageClass {
 				$return_data .= "編集に失敗しました<br />";
 				break;
 			case "delete-ok":
+				if(!empty($_GET['id'])){
+					$return_data .= "id".esc_html($_GET['id'])."の";
+				}
 				$return_data .= "削除に成功しました<br />";
 				break;
 			case "delete-ng":

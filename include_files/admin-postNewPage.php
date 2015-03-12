@@ -444,6 +444,27 @@ if(class_exists('DiagnosisAdmin')){
 				<?php endif; ?>
 
 				</form>
+			<?php
+			if(!empty($write_id)):
+			?>
+				<form action="admin.php?page=diagnosis-generator-delete.php" method="POST">
+					<input type="hidden" name="delete" value="1" />
+					<input type="hidden" name="data_id" value="<?php echo $write_id; ?>" />
+					<div class="delete-button">
+						<div class="submit"><input type="button" value="削除する" /></div>
+					</div>
+					<div class="delete-submit" style="display:none;">
+						<div>この診断フォームを削除します。よろしいですか？</div>
+						<div>フォームid:<?php echo $write_id; ?><span style="padding-left:25px;">フォームタイトル<?php self::post_set('form_title'); ?></span></div>
+						<div class="submit">
+							<input type="submit" name="submit" value="削除を実行" />
+							<span class="delete-cancel" style="padding-left:25px;"><input type="button" value="キャンセル" /></span>
+						</div>
+					</div>
+				</form>
+			<?php
+			endif;
+			?>
 			</div>
 		</div>
 	</div>
@@ -473,6 +494,15 @@ j(document).ready(function(){
 	if(textgo==1){
 		display_textarea();
 	}
+	// 削除 /////////////////////////////////
+	j('.delete-button input').click(function(){
+		j('.delete-submit').show();
+		j('.delete-button').hide();
+	});
+	j('.delete-cancel').click(function(){
+		j('.delete-submit').hide();
+		j('.delete-button').show();
+	});
 });
 function table_display(str){
 	if(str==0){

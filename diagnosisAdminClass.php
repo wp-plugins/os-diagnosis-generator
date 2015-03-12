@@ -28,6 +28,7 @@ class DiagnosisAdmin extends DiagnosisClass {
 		// メニューに非表示するページ
 		add_submenu_page('diagnosis-generator-options.php', '利用規約', null, 'administrator', 'diagnosis-generator-agreement.php', array('DiagnosisAdmin', 'agreementPage'));
 		add_submenu_page('diagnosis-generator-new.php', '編集', null, 'administrator', 'diagnosis-generator-write.php', array('DiagnosisAdmin', 'postWritePage'));
+		add_submenu_page('diagnosis-generator-new.php', '削除', null, 'administrator', 'diagnosis-generator-delete.php', array('DiagnosisAdmin', 'postDeletePage'));
 
 	}
 	//
@@ -182,6 +183,21 @@ class DiagnosisAdmin extends DiagnosisClass {
 		self::action_cache_delete();
 
 	}
+	// Page 削除
+	public function postDeletePage(){
+
+		// POST時
+		if(!empty($_POST['delete']) && !empty($_POST['data_id'])){
+			DiagnosisSqlClass::delete_data(OSDG_PLUGIN_TABLE_NAME, 'data_id', $_POST['data_id']);
+			DiagnosisSqlClass::delete_data(OSDG_PLUGIN_DETAIL_TABLE_NAME, 'data_id', $_POST['data_id']);
+			DiagnosisSqlClass::delete_data(OSDG_PLUGIN_QUESTION_TABLE_NAME, 'data_id', $_POST['data_id']);
+			//
+			self::os_redirect(admin_url('/').'admin.php?page=diagnosis-generator-new.php&id='.esc_html($_POST['data_id']).'&msg=delete-ok');
+		}else{
+			echo "削除エラー！";
+		}
+
+	}
 	// Page 診断フォーム一覧
 	public function postListPage(){
 
@@ -190,7 +206,6 @@ class DiagnosisAdmin extends DiagnosisClass {
 		$data = DiagnosisSqlClass::get_list_diagnosis();
 		$message .= DiagnosisMessageClass::updateMessage();
 		include_once(OSDG_PLUGIN_INCLUDE_FILES."/admin-postListPage.php");
-
 
 	}
 	/*
