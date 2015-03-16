@@ -133,8 +133,8 @@ if(class_exists('DiagnosisAdmin')){
 										$checked = self::post_set('diagnosis_count', 1);
 										if(!empty($checked)){ $diagnosis_count = $checked; }else{ $diagnosis_count = 10; }
 									?>
-									<select name="diagnosis_count" id="diagnosis_count" class="input" on>
-										<option value="5" <?php if($diagnosis_count==5){ ?>selected<?php } ?> onclick="change_display_question_count(5)">5問</option>
+									<select name="diagnosis_count" id="diagnosis_count" class="input">
+										<option value="5" <?php if($diagnosis_count==5){ ?>selected<?php } ?>>5問</option>
 										<option value="10" <?php if($diagnosis_count==10){ ?>selected<?php } ?>>10問</option>
 										<option value="25" <?php if($diagnosis_count==25){ ?>selected<?php } ?>>25問</option>
 										<option value="50" <?php if($diagnosis_count==50){ ?>selected<?php } ?>>50問</option>

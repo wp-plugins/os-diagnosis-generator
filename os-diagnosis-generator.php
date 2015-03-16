@@ -3,7 +3,7 @@
 Plugin Name: 診断ジェネレータ作成プラグイン
 Plugin URI: http://lp.olivesystem.jp/plugin-dg
 Description: WordPressで診断ジェネレータ（診断サイト、占いサイト）を作成できるプラグインです
-Version: 1.1.3
+Version: 1.1.4
 Author: OLIVESYSTEM（オリーブシステム）
 Author URI: http://lp.olivesystem.jp/
 */
@@ -11,7 +11,7 @@ if(!isset($wpdb)){
 	global $wpdb;
 }
 // 現在のプラグインバージョン
-define('OSDG_PLUGIN_VERSION','1.1.3');
+define('OSDG_PLUGIN_VERSION','1.1.4');
 // 現在のテーブルバージョン
 define('OSDG_PLUGIN_TABLE_VERSION','1.0');
 // DBにデータを保存する項目名

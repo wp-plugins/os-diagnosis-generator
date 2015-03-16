@@ -345,7 +345,7 @@ class DiagnosisSqlClass extends DiagnosisClass {
 				$p = self::post_premise_change($post, $p, $key);
 				$params[] = trim($p);
 			}
-			elseif($key=='post_authority' || $key=='result_page' || $key=='after_header_flag' || $key=='after_footer_flag' || $key=='form_title_flag'){
+			elseif($key=='post_authority' || $key=='result_page' || $key=='diagnosis_type' || $key=='diagnosis_count' || $key=='after_header_flag' || $key=='after_footer_flag' || $key=='form_title_flag'){
 				$set_data .= "`".self::sql_escape($key)."`= %d ,";
 				$params[] = trim($p);
 			}
