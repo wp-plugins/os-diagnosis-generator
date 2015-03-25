@@ -124,6 +124,12 @@ $user_contents .= $user_page_view."\n";
 
 				}elseif(isset($data['diagnosis_type']) && $data['diagnosis_type']==1){
 				// 設問形式のフォーム //////////////////////////////////
+					if(!empty($data['diagnosis_count'])){
+						$diagnosis_count = $data['diagnosis_count'];
+					}else{
+						$diagnosis_count = 10;
+					}
+					//
 					if(!empty($data['question'])){
 						$q = 1;
 
@@ -156,15 +162,17 @@ $user_contents .= $user_page_view."\n";
 
 								$l++;
 							}
-							$q++;
-
 $user_page_view=<<<_EOD_
 						</div>
 					</div>
 _EOD_
 ;
 $user_contents .= $user_page_view."\n";
-
+							//
+							if($q==$diagnosis_count){
+								break;
+							}
+							$q++;
 						}
 						// 設問表示 end
 						// 設問data_id start
