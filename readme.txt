@@ -3,7 +3,7 @@ Contributors: olivesystem
 Tags: plugin,admin,診断
 Requires at least: 2.8
 Tested up to: 4.1
-Stable tag: 1.1.41
+Stable tag: 1.1.42
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 == Screenshots ==
 
 == Changelog ==
+
+= 1.1.42 =
+* 2015-03-27  バグ修正。
 
 = 1.1.4 =
 * 2015-03-16  フォーム更新時の不具合を修正。

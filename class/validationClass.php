@@ -181,7 +181,7 @@ class DiagnosisValidationClass extends DiagnosisClass {
 
 		$start_error = 0;
 		$end_error = 0;
-		$count = mb_strlen($post);
+		$count = mb_strlen($post, "UTF-8");
 		// 開始文字数
 		if(!empty($start)){
 			if($start<$count || $count==$start){
